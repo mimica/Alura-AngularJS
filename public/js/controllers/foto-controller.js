@@ -1,5 +1,8 @@
-angular.module('alurapic').controller('FotoController', function ($scope, recursoFoto, cadastroDeFotos, $routeParams) {
-	
+// Não proteje contra minificação
+//angular.module('alurapic').controller('FotoController', function ($scope, recursoFoto, cadastroDeFotos, $routeParams) {
+
+// Projete contra minificação
+angular.module('alurapic').controller('FotoController', ['$scope', 'recursoFoto', '$routeParams', 'cadastroDeFotos', function ($scope, recursoFoto, $routeParams, cadastroDeFotos) {	
 	$scope.foto = {};
 	$scope.mensagem = '';
 	console.log($routeParams.fotoId);
@@ -31,6 +34,9 @@ angular.module('alurapic').controller('FotoController', function ($scope, recurs
 					// limpa o formulário se for inclusão
 					if (dados.inclusao)
 						$scope.foto = {};
+
+					// Set focus
+					//$scope.focado = 'true';
 				})
 				.catch(function(error) {
 					$scope.mensagem = error.mensagem;
@@ -38,4 +44,4 @@ angular.module('alurapic').controller('FotoController', function ($scope, recurs
 		}
 	};
 
-});
+}]);
