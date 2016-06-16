@@ -12,12 +12,18 @@ angular.module('meusServicos', ['ngResource'])
 })
 .factory('cadastroDeFotos', function(recursoFoto, $q) {
 
+	// $q : permite criar promisses
+
+	// Return a JS object
 	var servico = {};
 
-	servico.cadastrar = function(foto) {
-
-		return $q(function(resolve, reject) {
-			if (foto._id) {
+	servico.cadastrar = function(foto)
+	{
+		return $q(function(resolve, reject)
+		{
+			if (foto._id)
+			{
+				// Update
 				recursoFoto.update({fotoId: foto._id}, foto, function() {
 					resolve({
 						mensagem : 'Foto ' + foto.titulo + ' atualizada com sucesso!',
@@ -30,7 +36,9 @@ angular.module('meusServicos', ['ngResource'])
 					});
 				});
 			}
-			else {
+			else
+			{
+				// Insert
 				recursoFoto.save(foto, function() {
 					resolve({
 						mensagem : 'Foto ' + foto.titulo + ' incluída com sucesso!',
