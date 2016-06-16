@@ -22,6 +22,10 @@ angular.module('alurapic').controller('FotoController', function ($scope, $http,
 				$http.put('v1/fotos/' + $scope.foto._id, $scope.foto)
 					.success(function () {
 						$scope.foto = {};
+						
+						//Veja que ao limparmos o formulário, automaticamente nossa validação é disparada. Contudo, se você quiser que isso não acontece, logo depois de limpar o formulário faça:
+						$scope.formulario.$setPristine();
+
 						$scope.mensagem = 'Foto alterada com sucesso.';
 						console.log('Foto alterada com sucesso.');
 					})
@@ -35,6 +39,10 @@ angular.module('alurapic').controller('FotoController', function ($scope, $http,
 				$http.post('v1/fotos', $scope.foto)
 					.success(function () {
 						$scope.foto = {};
+
+						//Veja que ao limparmos o formulário, automaticamente nossa validação é disparada. Contudo, se você quiser que isso não acontece, logo depois de limpar o formulário faça:
+						$scope.formulario.$setPristine();
+						
 						$scope.mensagem = 'Foto incluída com sucesso.';
 						console.log('Foto cadastrada com sucesso.');
 					})
